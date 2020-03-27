@@ -1,7 +1,7 @@
 /*Top Comment Lines
  * 
  * 
- * Office Gaming light
+ * Test light
  * 
  * 
  * Published March 2020
@@ -46,9 +46,12 @@ bool prevcommand = 0;
 bool statechange = 1;
 bool Heartbeat = 0;
 bool Firmware =0;
+int Rcolor = 0; 
+int Gcolor = 0; 
+int Bcolor = 0; 
+int Wcolor = 0; 
 unsigned long connect_time;
 unsigned long heartbeat_reset;
-
 
 WiFiClient espClient;         //wifi client
 PubSubClient client(espClient); //MQTT client requires wifi client
@@ -66,7 +69,6 @@ unsigned long lastNTPResponse = millis();
 uint32_t timeUNIX = 0;
 uint32_t actualTime=0;
 unsigned long prevActualTime = 0;
-
 
 /************************setup light strip*****************************************/
 // For Esp8266, the Pin is omitted and it uses GPIO3 due to DMA hardware use.  
@@ -245,6 +247,10 @@ void callback(char* topic, byte* payload, unsigned int length2){
     command = root["command"];  //binary 0 or 1
     Heartbeat = root["Heartbeat"];
     Firmware = root["Firmware"];
+    Rcolor = root["Red"];
+    Gcolor = root["Green"];
+    Bcolor = root ["Blue"];
+    Wcolor = root ["White"];
      
     if (Heartbeat !=1){
       if (command != prevcommand){
@@ -301,9 +307,10 @@ void sendStartupMessage(){
 
 /***************Effect Control*****************************************************/
   void effect_control (){
-   
+   RgbwColor color(Rcolor,Gcolor,Bcolor,Wcolor);
+
     if (command==1 && statechange==1){
-     LightOutMiddle (red);
+     LightOutMiddle (color);
      //full_on();
      //half_on();
       //colorWipe(white,50);
