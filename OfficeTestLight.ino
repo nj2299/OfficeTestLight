@@ -303,7 +303,7 @@ void sendStartupMessage(){
   void effect_control (){
    
     if (command==1 && statechange==1){
-     LightOutMiddle (purple);
+     LightOutMiddle (red);
      //full_on();
      //half_on();
       //colorWipe(white,50);
