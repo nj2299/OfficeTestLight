@@ -70,8 +70,8 @@ unsigned long prevActualTime = 0;
 
 /************************setup light strip*****************************************/
 // For Esp8266, the Pin is omitted and it uses GPIO3 due to DMA hardware use.  
-//NeoPixelBus<NeoGrbFeature, NeoWs2813Method> strip(PixelCount); // 3 pixel LED strip (rgb)
-NeoPixelBus<NeoRgbwFeature, NeoWs2813Method> strip(PixelCount);  //rgbw pixel strip
+NeoPixelBus<NeoGrbwFeature, NeoWs2813Method> strip(PixelCount); // 3 pixel LED strip (rgb)
+//NeoPixelBus<NeoRgbwFeature, NeoWs2813Method> strip(PixelCount);  //rgbw pixel strip
 #define colorSaturation 255
 
 RgbwColor red(colorSaturation, 0, 0,0);
