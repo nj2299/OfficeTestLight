@@ -78,6 +78,7 @@ RgbwColor red(colorSaturation, 0, 0,0);
 RgbwColor green(0, colorSaturation, 0,0);
 RgbwColor blue(0, 0, colorSaturation,0);
 RgbwColor white(0,0,0,colorSaturation);
+RgbwColor purple(128,0,128,0);
 RgbwColor black(0);
 
 /****************setup wifi************************************/
@@ -302,7 +303,7 @@ void sendStartupMessage(){
   void effect_control (){
    
     if (command==1 && statechange==1){
-     LightOutMiddle (blue);
+     LightOutMiddle (purple);
      //full_on();
      //half_on();
       //colorWipe(white,50);
