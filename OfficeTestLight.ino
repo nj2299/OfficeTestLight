@@ -311,8 +311,8 @@ void sendStartupMessage(){
   void effect_control (){
    RgbwColor color(Rcolor,Gcolor,Bcolor,Wcolor);
    colorchange = 0;
-
-    if (command==1 && statechange==1){
+//if (command==1 && statechange==1)
+    if (command==1){
      LightOutMiddle (color);
      //full_on();
      //half_on();
@@ -323,7 +323,7 @@ void sendStartupMessage(){
       Serial.flush();
     }
 
-    if (command==0 && statechange==1){
+    if (command==0){
       clear_strip();
       //LightOutMiddle (black);
       Serial.println("lights off");
