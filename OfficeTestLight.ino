@@ -46,6 +46,7 @@ bool prevcommand = 0;
 bool statechange = 1;
 bool Heartbeat = 0;
 bool Firmware =0;
+bool colorchange = 0;
 int Rcolor = 0; 
 int Gcolor = 0; 
 int Bcolor = 0; 
@@ -251,6 +252,7 @@ void callback(char* topic, byte* payload, unsigned int length2){
     Gcolor = root["Green"];
     Bcolor = root ["Blue"];
     Wcolor = root ["White"];
+    colorchange = root["colorchange"];
      
     if (Heartbeat !=1){
       if (command != prevcommand){
@@ -308,6 +310,7 @@ void sendStartupMessage(){
 /***************Effect Control*****************************************************/
   void effect_control (){
    RgbwColor color(Rcolor,Gcolor,Bcolor,Wcolor);
+   colorchange = 0;
 
     if (command==1 && statechange==1){
      LightOutMiddle (color);
@@ -538,6 +541,8 @@ void loop() {
   actualTime = timeUNIX + (currentMillis - lastNTPResponse)/1000;
   if (actualTime != prevActualTime && timeUNIX != 0) { // If a second has passed since last print
     prevActualTime = actualTime;
-    effect_control();
+    if (colorchange == 1){
+      effect_control();
+    }
   }
 }
