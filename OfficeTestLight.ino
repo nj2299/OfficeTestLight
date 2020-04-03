@@ -30,7 +30,7 @@
 #define MQTT_MAX_PACKET_SIZE 512
 
 /*************************global Variables***************************/
-const char* mqttServer = "192.168.1.13";
+const char* mqttServer = "192.168.1.14";
 const int mqttPort = 1883;
 const char* clientName = "";  //these three variables used for setting the client name to the Macaddress
 String topicString;
@@ -130,7 +130,7 @@ void updateFirmware(){
   
  // t_httpUpdate_return ret = ESPhttpUpdate.update("http://99.231.14.167/update");
  //   t_httpUpdate_return ret = ESPhttpUpdate.update("http://nj2299.duckdns.org:1881/BasementTVLightUpdate");
- t_httpUpdate_return ret = ESPhttpUpdate.update("http://nodered:J1Gal00@192.168.1.13:1880/endpoint/OfficeTestLightUpdate");
+ t_httpUpdate_return ret = ESPhttpUpdate.update("http://nodered:J1Gal00@192.168.1.14:1880/endpoint/OfficeTestLightUpdate");
 
       Serial.println(ret);
         switch(ret) {
